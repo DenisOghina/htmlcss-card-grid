@@ -121,13 +121,53 @@ a {
 	border-radius: 8px;
 	font-weight: bold;
 	text-align: center;
+	/* Nuove proprietà banner */
+	order: -1;
+	grid-column: 1 / -1;
 }
 
+.row {
+	display: grid;
+	gap: 24px;
+	/*Bonus*/
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	/* A 600px vedo una colonna, a 1300 ne vedo 3. Rispetto ai breakpoint delle mediaquery
+	 con "auto-fit" gli dico di far entrare tutte le colonne che ci stanno. 
+	 Invece con "mimax(280px, 1fr), la colonna ha almeno 280px e può crescere fino a prendersi
+	 lo spazio che resta. Quindi a 600px se tolgo il padding del main, 
+	 che in totale è 48px (24 +24) la card ha 552px. A 1300px invece devo togliere 
+	 il padding del main e il gap tra le colonne, quindi la card ha 368px. */
+}
 
 /* Il menu è già fatto: da 576px le voci al posto dell'icona */
 @media screen and (min-width: 576px) {
-	.left-nav { display: flex; }
-	.bi-list { display: none; }
+	.left-nav {
+		display: flex;
+	}
+
+	.bi-list {
+		display: none;
+	}
 }
 
-/* Da qui in giù scrivi tu: le colonne con Grid e il banner */
+/*@media screen and (min-width: 676px) {
+	.row {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+@media screen and (min-width: 876px) {
+	.row {
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	.banner {
+		order: 1;
+	}
+}
+
+@media screen and (min-width: 1200px) {
+	.row {
+		grid-template-columns: repeat(4, 1fr);
+	}
+}*/
